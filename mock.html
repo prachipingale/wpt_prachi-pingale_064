@@ -1,0 +1,80 @@
+<html>
+<body>
+
+ <form >
+	<br>Book-ID:
+  <input type="text" id="book" placeholder="enter bookid">
+  <span id="sf"> book add or not</span>
+</form>
+
+
+<form>
+<Br/>Book Name<input type="text" id="name" placeholder="enter book name"/>
+</form>
+
+<form >
+	<Br/>price<input type="text" id="price" placeholder="enter price"/>
+	</form>
+
+<button id="b2">Add a book</button>
+
+
+</body>
+
+<script src="jquery-3.5.1.min.js"></script>
+<script>//our scrip will come here 
+
+
+
+ $(()=>
+{
+ console.log(" content ");
+$("#b2").click(()=> 
+	{ 
+		console.log("jquery works");
+		//alert("jquery works")
+	
+	let input={
+		bookid:$('#book').val(),
+		bookname: $('#name').val(),
+		price: $('#price').val()
+	};
+	console.log(data);
+	
+	let ajaxdata={
+		data:input,
+		url:"http://localhost:900/mock",
+		type:'get',
+		datatype:'json',
+
+		success:(datagivenby)=>{console.log('added successfully'+datagivenby.status);},
+		error:(errorgivenby)=>{console.log('error occure',+errorgivenby.status);}
+	};
+	$.ajax(ajaxdata);
+	});
+});
+	
+$(()=>
+{
+ console.log(" showall ");
+  function shoowContent(){
+	let content="";  
+	
+	let ajaxdata2={
+		data: {},
+		url:"http://localhost:900/show",
+		type:'get',
+		datatype:'json',
+
+		success:(datagivenby)=>{console.log('show successfully'+datagivenby.status);},
+		error:(errorgivenby)=>{console.log('not showing',+errorgivenby.status);}
+	};
+	$.ajax(ajaxdata2);
+}
+	});
+
+
+</script>
+
+
+</html>
